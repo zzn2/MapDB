@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2012-12-08T19:46:57.639">
+<file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java">
+<violation beginline="478" endline="480" begincolumn="57" endcolumn="13" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="BTreeMap" method="put2" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="1433" endline="1433" begincolumn="32" endcolumn="47" rule="OverrideBothEqualsAndHashcode" ruleset="Basic Rules" package="org.mapdb" class="BTreeMap$EntrySet" method="equals" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#OverrideBothEqualsAndHashcode" priority="3">
+Ensure you override both equals() and hashCode()
+</violation>
+</file>
+<file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/CacheHardRef.java">
+<violation beginline="21" endline="21" begincolumn="8" endcolumn="44" rule="DuplicateImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#DuplicateImports" priority="4">
+Avoid duplicate imports such as 'javax.management.NotificationListener'
+</violation>
+<violation beginline="167" endline="169" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.mapdb" class="CacheHardRef" method="removeMemoryLowListener" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/DBMaker.java">
+<violation beginline="514" endline="516" begincolumn="36" endcolumn="9" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="DBMaker" method="make" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+</file>
+<file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/Fun.java">
+<violation beginline="19" endline="19" begincolumn="1" endcolumn="25" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.io.DataInput'
+</violation>
+<violation beginline="20" endline="20" begincolumn="1" endcolumn="26" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.io.DataOutput'
+</violation>
+<violation beginline="21" endline="21" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.io.IOException'
+</violation>
+<violation beginline="42" endline="44" begincolumn="25" endcolumn="5" rule="UnnecessaryFinalModifier" ruleset="Basic Rules" package="org.mapdb" class="Fun" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UnnecessaryFinalModifier" priority="3">
+Unnecessary final modifier in final class
+</violation>
+</file>
+<file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/HTreeMap.java">
+<violation beginline="492" endline="492" begincolumn="21" endcolumn="27" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.mapdb" class="HTreeMap" method="remove" variable="counter" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'counter'.
+</violation>
+</file>
+<file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/Locks.java">
+<violation beginline="19" endline="19" begincolumn="1" endcolumn="24" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.Arrays'
+</violation>
+</file>
+<file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/SerializerBase.java">
+<violation beginline="1211" endline="1211" begincolumn="38" endcolumn="57" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.mapdb" class="SerializerBase" method="deserializeLinkedList" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/SerializerPojo.java">
+<violation beginline="179" endline="179" begincolumn="24" endcolumn="34" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.mapdb" class="SerializerPojo$FieldInfo" variable="setterIndex" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'setterIndex'.
+</violation>
+<violation beginline="181" endline="181" begincolumn="24" endcolumn="34" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.mapdb" class="SerializerPojo$FieldInfo" variable="getterIndex" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'getterIndex'.
+</violation>
+<violation beginline="200" endline="200" begincolumn="20" endcolumn="34" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.mapdb" class="SerializerPojo$FieldInfo" method="initSetter" variable="fieldSetterName" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'fieldSetterName'.
+</violation>
+<violation beginline="213" endline="215" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.mapdb" class="SerializerPojo$FieldInfo" method="initSetter" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="225" endline="227" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.mapdb" class="SerializerPojo$FieldInfo" method="initSetter" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="236" endline="236" begincolumn="20" endcolumn="34" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.mapdb" class="SerializerPojo$FieldInfo" method="initGetter" variable="fieldSetterName" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'fieldSetterName'.
+</violation>
+<violation beginline="249" endline="251" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.mapdb" class="SerializerPojo$FieldInfo" method="initGetter" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="261" endline="263" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.mapdb" class="SerializerPojo$FieldInfo" method="initGetter" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="383" endline="385" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.mapdb" class="SerializerPojo" method="getFieldValue" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/StorageDirect.java">
+<violation beginline="120" endline="122" begincolumn="46" endcolumn="16" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="StorageDirect" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+</file>
+<file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/StorageTrans.java">
+<violation beginline="211" endline="213" begincolumn="47" endcolumn="17" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="StorageTrans" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+</file>
+</pmd>
