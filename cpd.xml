@@ -116,6 +116,28 @@
 ]]>
 </codefragment>
 </duplication>
+<duplication lines="14" tokens="122">
+<file line="660" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/LongConcurrentLRUMap.java"/>
+<file line="688" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/LongConcurrentLRUMap.java"/>
+<codefragment>
+<![CDATA[
+  public Map<Long,V> getOldestAccessedItems(int n) {
+    Map<Long,V> result = new LinkedHashMap<Long,V>();
+    if (n <= 0)
+      return result;
+    TreeSet<CacheEntry<V>> tree = new TreeSet<CacheEntry<V>>();
+    markAndSweepLock.lock();
+    try {
+        for( Iterator<CacheEntry<V>> iter = map.valuesIterator(); iter.hasNext();){
+        CacheEntry<V> ce = iter.next();
+        ce.lastAccessedCopy = ce.lastAccessed;
+        if (tree.size() < n) {
+          tree.add(ce);
+        } else {
+          if (ce.lastAccessedCopy < tree.first().lastAccessedCopy) {
+]]>
+</codefragment>
+</duplication>
 <duplication lines="3" tokens="121">
 <file line="72" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/EncryptionXTEA.java"/>
 <file line="95" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/EncryptionXTEA.java"/>

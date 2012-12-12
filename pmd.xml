@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.3" timestamp="2012-12-10T23:01:31.268">
+<pmd version="4.3" timestamp="2012-12-12T22:57:26.356">
+<file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/AsyncWriteEngine.java">
+<violation beginline="23" endline="23" begincolumn="1" endcolumn="23" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.Queue'
+</violation>
+</file>
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java">
 <violation beginline="478" endline="480" begincolumn="57" endcolumn="13" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="BTreeMap" method="put2" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
@@ -12,12 +17,12 @@ Ensure you override both equals() and hashCode()
 <violation beginline="21" endline="21" begincolumn="8" endcolumn="44" rule="DuplicateImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#DuplicateImports" priority="4">
 Avoid duplicate imports such as 'javax.management.NotificationListener'
 </violation>
-<violation beginline="167" endline="169" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.mapdb" class="CacheHardRef" method="removeMemoryLowListener" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+<violation beginline="109" endline="111" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.mapdb" class="CacheHardRef" method="removeMemoryLowListener" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
 </file>
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/DBMaker.java">
-<violation beginline="535" endline="537" begincolumn="36" endcolumn="9" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="DBMaker" method="make" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+<violation beginline="546" endline="548" begincolumn="36" endcolumn="9" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="DBMaker" method="make" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
 </file>
