@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.3" timestamp="2012-12-15T13:26:18.294">
+<pmd version="4.3" timestamp="2012-12-15T13:43:52.247">
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/AsyncWriteEngine.java">
 <violation beginline="23" endline="23" begincolumn="1" endcolumn="23" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
 Avoid unused imports such as 'java.util.Queue'
