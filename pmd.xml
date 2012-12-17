@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.3" timestamp="2012-12-15T21:25:50.260">
+<pmd version="4.3" timestamp="2012-12-17T22:27:02.436">
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/AsyncWriteEngine.java">
 <violation beginline="23" endline="23" begincolumn="1" endcolumn="23" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
 Avoid unused imports such as 'java.util.Queue'
@@ -43,11 +43,6 @@ Unnecessary final modifier in final class
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/HTreeMap.java">
 <violation beginline="492" endline="492" begincolumn="21" endcolumn="27" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.mapdb" class="HTreeMap" method="remove" variable="counter" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
 Avoid unused local variables such as 'counter'.
-</violation>
-</file>
-<file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/Locks.java">
-<violation beginline="19" endline="19" begincolumn="1" endcolumn="24" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
-Avoid unused imports such as 'java.util.Arrays'
 </violation>
 </file>
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/SerializerBase.java">

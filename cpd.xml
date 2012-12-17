@@ -116,6 +116,31 @@
 ]]>
 </codefragment>
 </duplication>
+<duplication lines="17" tokens="126">
+<file line="52" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/CacheHashTable.java"/>
+<file line="59" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/CacheHashTableSynchronized.java"/>
+<codefragment>
+<![CDATA[
+    }
+
+    @Override
+    public <A> long recordPut(A value, Serializer<A> serializer) {
+        //no need for locking, as recid is not propagated outside of method yet
+        final long recid = engine.recordPut(value, serializer);
+        items[Math.abs(Utils.longHash(recid))%cacheMaxSize] = new HashItem(recid, value);
+        return recid;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public <A> A recordGet(long recid, Serializer<A> serializer) {
+        final int pos = Math.abs(Utils.longHash(recid))%cacheMaxSize;
+        HashItem item = items[pos];
+        if(item!=null && recid == item.key)
+            return (A) item.val;
+]]>
+</codefragment>
+</duplication>
 <duplication lines="14" tokens="122">
 <file line="660" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/LongConcurrentLRUMap.java"/>
 <file line="688" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/LongConcurrentLRUMap.java"/>
