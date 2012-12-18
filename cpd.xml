@@ -142,8 +142,8 @@
 </codefragment>
 </duplication>
 <duplication lines="14" tokens="122">
-<file line="660" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/LongConcurrentLRUMap.java"/>
-<file line="688" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/LongConcurrentLRUMap.java"/>
+<file line="657" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/LongConcurrentLRUMap.java"/>
+<file line="685" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/LongConcurrentLRUMap.java"/>
 <codefragment>
 <![CDATA[
   public Map<Long,V> getOldestAccessedItems(int n) {

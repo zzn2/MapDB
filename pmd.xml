@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.3" timestamp="2012-12-18T01:09:59.291">
+<pmd version="4.3" timestamp="2012-12-18T23:04:52.849">
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/AsyncWriteEngine.java">
 <violation beginline="23" endline="23" begincolumn="1" endcolumn="23" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
 Avoid unused imports such as 'java.util.Queue'
@@ -50,6 +50,17 @@ Avoid unused local variables such as 'counter'.
 Avoid using java.lang.ThreadGroup; it is not thread safe
 </violation>
 </file>
+<file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/SerializerCompressWrapper.java">
+<violation beginline="18" endline="18" begincolumn="1" endcolumn="25" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.io.DataInput'
+</violation>
+<violation beginline="19" endline="19" begincolumn="1" endcolumn="26" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.io.DataOutput'
+</violation>
+<violation beginline="20" endline="20" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.io.IOException'
+</violation>
+</file>
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/SerializerPojo.java">
 <violation beginline="179" endline="179" begincolumn="24" endcolumn="34" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.mapdb" class="SerializerPojo$FieldInfo" variable="setterIndex" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'setterIndex'.
@@ -80,7 +91,7 @@ Avoid empty catch blocks
 </violation>
 </file>
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/StorageDirect.java">
-<violation beginline="120" endline="122" begincolumn="46" endcolumn="16" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="StorageDirect" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+<violation beginline="150" endline="152" begincolumn="51" endcolumn="21" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="StorageDirect" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
 </file>
@@ -88,7 +99,7 @@ Avoid empty if statements
 <violation beginline="19" endline="19" begincolumn="1" endcolumn="46" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
 Avoid unused imports such as 'sun.util.resources.TimeZoneNames_zh_CN'
 </violation>
-<violation beginline="213" endline="215" begincolumn="47" endcolumn="17" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="StorageJournaled" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+<violation beginline="288" endline="290" begincolumn="51" endcolumn="21" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="StorageJournaled" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
 </file>
