@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.3" timestamp="2012-12-18T23:04:52.849">
+<pmd version="4.3" timestamp="2012-12-19T23:28:19.249">
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/AsyncWriteEngine.java">
 <violation beginline="23" endline="23" begincolumn="1" endcolumn="23" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
 Avoid unused imports such as 'java.util.Queue'
@@ -22,7 +22,7 @@ Avoid empty catch blocks
 </violation>
 </file>
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/DBMaker.java">
-<violation beginline="546" endline="548" begincolumn="36" endcolumn="9" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="DBMaker" method="make" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+<violation beginline="547" endline="549" begincolumn="36" endcolumn="9" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="DBMaker" method="makeEngine" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
 </file>
