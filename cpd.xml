@@ -193,8 +193,8 @@
 </codefragment>
 </duplication>
 <duplication lines="18" tokens="113">
-<file line="376" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/HTreeMap.java"/>
-<file line="479" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/HTreeMap.java"/>
+<file line="380" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/HTreeMap.java"/>
+<file line="483" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/HTreeMap.java"/>
 <codefragment>
 <![CDATA[
                 long[][] dir = engine.recordGet(dirRecid, DIR_SERIALIZER);
