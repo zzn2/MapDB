@@ -40,15 +40,15 @@
         if(key == null || oldValue == null || newValue == null ) throw new NullPointerException();
 
         long current = rootRecid;
-        BNode node = engine.recordGet(current, nodeSerializer);
+        BNode node = engine.get(current, nodeSerializer);
         //dive until leaf is found
         while(!node.isLeaf()){
             current = nextDir((DirNode) node, key);
-            node = engine.recordGet(current, nodeSerializer);
+            node = engine.get(current, nodeSerializer);
         }
 
         nodeLocks.lock(current);
-        LeafNode leaf = (LeafNode) engine.recordGet(current, nodeSerializer);
+        LeafNode leaf = (LeafNode) engine.get(current, nodeSerializer);
 
         int pos = findChildren(key, node.keys());
         while(pos==leaf.keys.length){
@@ -56,7 +56,7 @@
             nodeLocks.lock(leaf.next);
             nodeLocks.unlock(current);
             current = leaf.next;
-            leaf = (LeafNode) engine.recordGet(current, nodeSerializer);
+            leaf = (LeafNode) engine.get(current, nodeSerializer);
             pos = findChildren(key, node.keys());
         }
 ]]>
@@ -197,7 +197,7 @@
 <file line="483" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/HTreeMap.java"/>
 <codefragment>
 <![CDATA[
-                long[][] dir = engine.recordGet(dirRecid, DIR_SERIALIZER);
+                long[][] dir = engine.get(dirRecid, DIR_SERIALIZER);
                 final int slot =  (h>>>(7*level )) & 0x7F;
                 if(CC.ASSERT && slot>127) throw new InternalError();
 
