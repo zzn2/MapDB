@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.3" timestamp="2012-12-31T23:42:07.254">
+<pmd version="4.3" timestamp="2013-01-03T01:42:31.680">
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/AsyncWriteEngine.java">
 <violation beginline="49" endline="49" begincolumn="34" endcolumn="51" rule="OverrideBothEqualsAndHashcode" ruleset="Basic Rules" package="org.mapdb" class="AsyncWriteEngine$WriteItem" method="equals" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#OverrideBothEqualsAndHashcode" priority="3">
 Ensure you override both equals() and hashCode()
@@ -122,10 +122,10 @@ Unnecessary final modifier in final class
 </violation>
 </file>
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java">
-<violation beginline="526" endline="528" begincolumn="57" endcolumn="13" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="BTreeMap" method="put2" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+<violation beginline="524" endline="526" begincolumn="57" endcolumn="13" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="BTreeMap" method="put2" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
-<violation beginline="1481" endline="1481" begincolumn="32" endcolumn="47" rule="OverrideBothEqualsAndHashcode" ruleset="Basic Rules" package="org.mapdb" class="BTreeMap$EntrySet" method="equals" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#OverrideBothEqualsAndHashcode" priority="3">
+<violation beginline="1487" endline="1487" begincolumn="32" endcolumn="47" rule="OverrideBothEqualsAndHashcode" ruleset="Basic Rules" package="org.mapdb" class="BTreeMap$EntrySet" method="equals" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#OverrideBothEqualsAndHashcode" priority="3">
 Ensure you override both equals() and hashCode()
 </violation>
 </file>

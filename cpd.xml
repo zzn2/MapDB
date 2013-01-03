@@ -32,14 +32,14 @@
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="22" tokens="144">
-<file line="889" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="937" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<duplication lines="22" tokens="148">
+<file line="895" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="943" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
 <![CDATA[
         if(key == null || oldValue == null || newValue == null ) throw new NullPointerException();
 
-        long current = rootRecid;
+        long current = rootRecid.get();
         BNode node = engine.get(current, nodeSerializer);
         //dive until leaf is found
         while(!node.isLeaf()){
@@ -88,8 +88,8 @@
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="127">
-<file line="1337" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1478" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1343" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1484" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
 <![CDATA[
                 return ((BTreeMap.SubMap<E,Object>)m).keyIterator();
@@ -163,8 +163,8 @@
 </codefragment>
 </duplication>
 <duplication lines="22" tokens="113">
-<file line="999" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1705" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1005" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1711" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
 <![CDATA[
     }
