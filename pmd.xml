@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.3" timestamp="2013-01-03T01:42:31.680">
+<pmd version="4.3" timestamp="2013-01-08T01:59:20.882">
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/AsyncWriteEngine.java">
-<violation beginline="49" endline="49" begincolumn="34" endcolumn="51" rule="OverrideBothEqualsAndHashcode" ruleset="Basic Rules" package="org.mapdb" class="AsyncWriteEngine$WriteItem" method="equals" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#OverrideBothEqualsAndHashcode" priority="3">
+<violation beginline="51" endline="51" begincolumn="34" endcolumn="51" rule="OverrideBothEqualsAndHashcode" ruleset="Basic Rules" package="org.mapdb" class="AsyncWriteEngine$WriteItem" method="equals" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#OverrideBothEqualsAndHashcode" priority="3">
 Ensure you override both equals() and hashCode()
 </violation>
-<violation beginline="87" endline="89" begincolumn="41" endcolumn="25" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="AsyncWriteEngine" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+<violation beginline="96" endline="98" begincolumn="41" endcolumn="25" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="AsyncWriteEngine" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
-<violation beginline="194" endline="194" begincolumn="53" endcolumn="54" rule="EmptyWhileStmt" ruleset="Basic Rules" package="org.mapdb" class="AsyncWriteEngine" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyWhileStmt" priority="3">
+<violation beginline="210" endline="210" begincolumn="53" endcolumn="54" rule="EmptyWhileStmt" ruleset="Basic Rules" package="org.mapdb" class="AsyncWriteEngine" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyWhileStmt" priority="3">
 Avoid empty while statements
 </violation>
-<violation beginline="249" endline="252" begincolumn="12" endcolumn="5" rule="UselessOverridingMethod" ruleset="Basic Rules" package="org.mapdb" class="AsyncWriteEngine" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UselessOverridingMethod" priority="3">
+<violation beginline="265" endline="268" begincolumn="12" endcolumn="5" rule="UselessOverridingMethod" ruleset="Basic Rules" package="org.mapdb" class="AsyncWriteEngine" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UselessOverridingMethod" priority="3">
 Overriding method merely calls super
 </violation>
-<violation beginline="268" endline="271" begincolumn="12" endcolumn="5" rule="UselessOverridingMethod" ruleset="Basic Rules" package="org.mapdb" class="AsyncWriteEngine" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UselessOverridingMethod" priority="3">
+<violation beginline="284" endline="287" begincolumn="12" endcolumn="5" rule="UselessOverridingMethod" ruleset="Basic Rules" package="org.mapdb" class="AsyncWriteEngine" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UselessOverridingMethod" priority="3">
 Overriding method merely calls super
 </violation>
 </file>
@@ -122,11 +122,16 @@ Unnecessary final modifier in final class
 </violation>
 </file>
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java">
-<violation beginline="524" endline="526" begincolumn="57" endcolumn="13" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="BTreeMap" method="put2" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+<violation beginline="527" endline="529" begincolumn="57" endcolumn="13" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="BTreeMap" method="put2" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
-<violation beginline="1487" endline="1487" begincolumn="32" endcolumn="47" rule="OverrideBothEqualsAndHashcode" ruleset="Basic Rules" package="org.mapdb" class="BTreeMap$EntrySet" method="equals" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#OverrideBothEqualsAndHashcode" priority="3">
+<violation beginline="1500" endline="1500" begincolumn="32" endcolumn="47" rule="OverrideBothEqualsAndHashcode" ruleset="Basic Rules" package="org.mapdb" class="BTreeMap$EntrySet" method="equals" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#OverrideBothEqualsAndHashcode" priority="3">
 Ensure you override both equals() and hashCode()
+</violation>
+</file>
+<file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/Bind.java">
+<violation beginline="35" endline="37" begincolumn="21" endcolumn="17" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="Bind" method="update" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
 </violation>
 </file>
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/CacheHardRef.java">
@@ -138,12 +143,15 @@ Avoid empty catch blocks
 </violation>
 </file>
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/DBMaker.java">
-<violation beginline="574" endline="576" begincolumn="36" endcolumn="9" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="DBMaker" method="makeEngine" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+<violation beginline="609" endline="611" begincolumn="36" endcolumn="9" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="DBMaker" method="makeEngine" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
 </file>
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/Fun.java">
-<violation beginline="40" endline="42" begincolumn="25" endcolumn="5" rule="UnnecessaryFinalModifier" ruleset="Basic Rules" package="org.mapdb" class="Fun" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UnnecessaryFinalModifier" priority="3">
+<violation beginline="20" endline="20" begincolumn="1" endcolumn="21" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.Map'
+</violation>
+<violation beginline="41" endline="43" begincolumn="25" endcolumn="5" rule="UnnecessaryFinalModifier" ruleset="Basic Rules" package="org.mapdb" class="Fun" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UnnecessaryFinalModifier" priority="3">
 Unnecessary final modifier in final class
 </violation>
 </file>
@@ -153,19 +161,19 @@ Avoid using java.lang.ThreadGroup; it is not thread safe
 </violation>
 </file>
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/SerializerPojo.java">
-<violation beginline="210" endline="212" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.mapdb" class="SerializerPojo$FieldInfo" method="initSetter" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+<violation beginline="211" endline="213" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.mapdb" class="SerializerPojo$FieldInfo" method="initSetter" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
-<violation beginline="222" endline="224" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.mapdb" class="SerializerPojo$FieldInfo" method="initSetter" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+<violation beginline="223" endline="225" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.mapdb" class="SerializerPojo$FieldInfo" method="initSetter" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
-<violation beginline="245" endline="247" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.mapdb" class="SerializerPojo$FieldInfo" method="initGetter" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+<violation beginline="246" endline="248" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.mapdb" class="SerializerPojo$FieldInfo" method="initGetter" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
-<violation beginline="257" endline="259" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.mapdb" class="SerializerPojo$FieldInfo" method="initGetter" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+<violation beginline="258" endline="260" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.mapdb" class="SerializerPojo$FieldInfo" method="initGetter" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
-<violation beginline="379" endline="381" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.mapdb" class="SerializerPojo" method="getFieldValue" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+<violation beginline="380" endline="382" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.mapdb" class="SerializerPojo" method="getFieldValue" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
 </file>
@@ -180,19 +188,19 @@ Avoid empty if statements
 </violation>
 </file>
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/Volume.java">
-<violation beginline="299" endline="299" begincolumn="40" endcolumn="63" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.mapdb" class="Volume$MappedFile" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+<violation beginline="310" endline="310" begincolumn="40" endcolumn="63" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.mapdb" class="Volume$MappedFile" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
 Avoid using java.lang.ThreadGroup; it is not thread safe
 </violation>
-<violation beginline="305" endline="305" begincolumn="39" endcolumn="57" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.mapdb" class="Volume$MappedFile" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+<violation beginline="316" endline="316" begincolumn="39" endcolumn="57" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.mapdb" class="Volume$MappedFile" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
 Avoid using java.lang.ThreadGroup; it is not thread safe
 </violation>
-<violation beginline="314" endline="314" begincolumn="39" endcolumn="57" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.mapdb" class="Volume$MappedFile" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+<violation beginline="325" endline="325" begincolumn="39" endcolumn="57" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.mapdb" class="Volume$MappedFile" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
 Avoid using java.lang.ThreadGroup; it is not thread safe
 </violation>
-<violation beginline="391" endline="391" begincolumn="31" endcolumn="49" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.mapdb" class="Volume$Memory" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+<violation beginline="402" endline="402" begincolumn="31" endcolumn="49" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.mapdb" class="Volume$Memory" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
 Avoid using java.lang.ThreadGroup; it is not thread safe
 </violation>
-<violation beginline="441" endline="441" begincolumn="36" endcolumn="59" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.mapdb" class="Volume$RandomAccessFile" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+<violation beginline="451" endline="451" begincolumn="36" endcolumn="59" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.mapdb" class="Volume$RandomAccessFile" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
 Avoid using java.lang.ThreadGroup; it is not thread safe
 </violation>
 </file>
