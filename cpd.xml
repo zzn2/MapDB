@@ -33,8 +33,8 @@
 </codefragment>
 </duplication>
 <duplication lines="22" tokens="148">
-<file line="905" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="954" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="902" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="951" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
 <![CDATA[
         if(key == null || oldValue == null || newValue == null ) throw new NullPointerException();
@@ -88,8 +88,8 @@
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="127">
-<file line="1356" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1497" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1353" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1494" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
 <![CDATA[
                 return ((BTreeMap.SubMap<E,Object>)m).keyIterator();
@@ -163,8 +163,8 @@
 </codefragment>
 </duplication>
 <duplication lines="22" tokens="113">
-<file line="1018" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1724" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1015" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1721" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
 <![CDATA[
     }
