@@ -32,9 +32,46 @@
 ]]>
 </codefragment>
 </duplication>
+<duplication lines="29" tokens="161">
+<file line="2013" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1133" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/HTreeMap.java"/>
+<codefragment>
+<![CDATA[
+        return new BTreeMap<K, V>(snapshot,treeRecid, defaultSerializer);
+    }
+
+
+
+    protected final Object modListenersLock = new Object();
+    protected Bind.MapListener<K,V>[] modListeners = new Bind.MapListener[0];
+
+    @Override
+    public void addModificationListener(Bind.MapListener<K,V> listener) {
+        synchronized (modListenersLock){
+            Bind.MapListener<K,V>[] modListeners2 =
+                    Arrays.copyOf(modListeners,modListeners.length+1);
+            modListeners2[modListeners2.length-1] = listener;
+            modListeners = modListeners2;
+        }
+
+    }
+
+    @Override
+    public void removeModificationListener(Bind.MapListener<K,V> listener) {
+        synchronized (modListenersLock){
+            for(int i=0;i<modListeners.length;i++){
+                if(modListeners[i]==listener) modListeners[i]=null;
+            }
+        }
+    }
+
+    protected void notify(K key, V oldValue, V newValue) {
+]]>
+</codefragment>
+</duplication>
 <duplication lines="22" tokens="148">
-<file line="902" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="951" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="952" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1001" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
 <![CDATA[
         if(key == null || oldValue == null || newValue == null ) throw new NullPointerException();
@@ -88,8 +125,8 @@
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="127">
-<file line="1353" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1494" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1403" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1544" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
 <![CDATA[
                 return ((BTreeMap.SubMap<E,Object>)m).keyIterator();
@@ -163,8 +200,8 @@
 </codefragment>
 </duplication>
 <duplication lines="22" tokens="113">
-<file line="1015" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1721" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1065" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1771" path="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
 <![CDATA[
     }

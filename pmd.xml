@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.3" timestamp="2013-01-16T00:30:45.365">
+<pmd version="4.3" timestamp="2013-01-17T22:46:17.643">
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/AsyncWriteEngine.java">
 <violation beginline="51" endline="51" begincolumn="34" endcolumn="51" rule="OverrideBothEqualsAndHashcode" ruleset="Basic Rules" package="org.mapdb" class="AsyncWriteEngine$WriteItem" method="equals" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#OverrideBothEqualsAndHashcode" priority="3">
 Ensure you override both equals() and hashCode()
@@ -121,11 +121,19 @@ Unnecessary final modifier in final class
 Unnecessary final modifier in final class
 </violation>
 </file>
+<file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeKeySerializer.java">
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="24" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.Arrays'
+</violation>
+</file>
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/BTreeMap.java">
-<violation beginline="527" endline="529" begincolumn="57" endcolumn="13" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="BTreeMap" method="put2" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+<violation beginline="33" endline="33" begincolumn="1" endcolumn="49" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.concurrent.CopyOnWriteArrayList'
+</violation>
+<violation beginline="577" endline="579" begincolumn="57" endcolumn="13" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.mapdb" class="BTreeMap" method="put2" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
-<violation beginline="1497" endline="1497" begincolumn="32" endcolumn="47" rule="OverrideBothEqualsAndHashcode" ruleset="Basic Rules" package="org.mapdb" class="BTreeMap$EntrySet" method="equals" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#OverrideBothEqualsAndHashcode" priority="3">
+<violation beginline="1547" endline="1547" begincolumn="32" endcolumn="47" rule="OverrideBothEqualsAndHashcode" ruleset="Basic Rules" package="org.mapdb" class="BTreeMap$EntrySet" method="equals" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#OverrideBothEqualsAndHashcode" priority="3">
 Ensure you override both equals() and hashCode()
 </violation>
 </file>
@@ -155,13 +163,18 @@ Avoid unused imports such as 'java.util.Map'
 Unnecessary final modifier in final class
 </violation>
 </file>
+<file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/HTreeMap.java">
+<violation beginline="25" endline="25" begincolumn="1" endcolumn="49" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.concurrent.CopyOnWriteArrayList'
+</violation>
+</file>
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/Queue2.java">
 <violation beginline="3" endline="3" begincolumn="1" endcolumn="41" rule="UnusedImports" ruleset="Import Statement Rules" package="org.mapdb" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
 Avoid unused imports such as 'org.jetbrains.annotations.NotNull'
 </violation>
 </file>
 <file name="/home/jan/MapDB/MapDB/src/main/java/org/mapdb/SerializerBase.java">
-<violation beginline="1236" endline="1236" begincolumn="38" endcolumn="57" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.mapdb" class="SerializerBase" method="deserializeLinkedList" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+<violation beginline="1270" endline="1270" begincolumn="38" endcolumn="57" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.mapdb" class="SerializerBase" method="deserializeLinkedList" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
 Avoid using java.lang.ThreadGroup; it is not thread safe
 </violation>
 </file>
