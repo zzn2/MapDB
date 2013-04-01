@@ -33,8 +33,8 @@
 </codefragment>
 </duplication>
 <duplication lines="29" tokens="161">
-<file line="2108" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1141" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/HTreeMap.java"/>
+<file line="2133" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1178" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/HTreeMap.java"/>
 <codefragment>
 <![CDATA[
         return new BTreeMap<K, V>(snapshot,treeRecid, defaultSerializer);
@@ -70,8 +70,8 @@
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="149">
-<file line="987" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1036" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1012" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1061" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
 <![CDATA[
         long rootRecid = engine.get(rootRecidRef, Serializer.LONG_SERIALIZER);
@@ -124,8 +124,8 @@
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="127">
-<file line="1461" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1606" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1486" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1631" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
 <![CDATA[
                 return ((BTreeMap.SubMap<E,Object>)m).keyIterator();
@@ -185,6 +185,44 @@
 ]]>
 </codefragment>
 </duplication>
+<duplication lines="30" tokens="121">
+<file line="250" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreDirect.java"/>
+<file line="236" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreWAL.java"/>
+<codefragment>
+<![CDATA[
+            put2(out, ioRecid, indexVals);
+        }finally{
+            lock.unlock();
+        }
+    }
+
+    @Override
+    public <A> boolean compareAndSwap(long recid, A expectedOldValue, A newValue, Serializer<A> serializer) {
+        final long ioRecid = IO_USER_START + recid*8;
+        final Lock lock = locks[Utils.longHash(recid)%CONCURRENCY_FACTOR].writeLock();
+        lock.lock();
+        try{
+            /*
+             * deserialize old value
+             */
+
+            A oldVal = get2(ioRecid,serializer);
+
+            /*
+             * compare oldValue and expected
+             */
+            if((oldVal == null && expectedOldValue!=null) || (oldVal!=null && !oldVal.equals(expectedOldValue)))
+                return false;
+
+            /*
+             * write new value
+             */
+            DataOutput2 out = serialize(newValue, serializer);
+
+            final long[] indexVals;
+]]>
+</codefragment>
+</duplication>
 <duplication lines="5" tokens="118">
 <file line="91" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/EncryptionXTEA.java"/>
 <file line="114" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/EncryptionXTEA.java"/>
@@ -199,8 +237,8 @@
 </codefragment>
 </duplication>
 <duplication lines="22" tokens="113">
-<file line="1100" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1860" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1125" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1885" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
 <![CDATA[
     }
@@ -225,6 +263,35 @@
             }
         }
     }
+]]>
+</codefragment>
+</duplication>
+<duplication lines="21" tokens="107">
+<file line="231" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreAppend.java"/>
+<file line="270" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreAppend.java"/>
+<codefragment>
+<![CDATA[
+            long pos;
+            long volNum;
+            Volume vol;
+            structuralLock.lock();
+            try{
+                pos = currentFileOffset;
+                currentFileOffset += 8 + 4 + out.pos;
+                currentVolume.ensureAvailable(currentFileOffset);
+                volNum = currentVolumeNum;
+                vol = currentVolume;
+                rollOverFile();
+            }finally {
+                structuralLock.unlock();
+            }
+            vol.putLong(pos, recid);
+            pos+=8;
+            long filePos = (volNum<<FILE_NUMBER_SHIFT) | pos;
+            vol.putInt(pos,out.pos);
+            pos+=4;
+            vol.putData(pos,out.buf, 0, out.pos);
+            recidsInTx.put(recid, filePos);
 ]]>
 </codefragment>
 </duplication>
