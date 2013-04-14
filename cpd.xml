@@ -32,6 +32,54 @@
 ]]>
 </codefragment>
 </duplication>
+<duplication lines="40" tokens="172">
+<file line="223" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreWAL.java"/>
+<file line="280" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreWAL.java"/>
+<codefragment>
+<![CDATA[
+            final long[] physPos;
+            final long[] logPos;
+
+            long indexVal = 0;
+            long[] linkedRecords = getLinkedRecordsFromLog(ioRecid);
+            if(linkedRecords==null){
+                indexVal = index.getLong(ioRecid);
+                linkedRecords = getLinkedRecordsIndexVals(indexVal);
+            }
+
+            structuralLock.lock();
+            try{
+                openLogIfNeeded();
+
+                //free first record pointed from indexVal
+                if(indexVal!=0)
+                    freePhysPut(indexVal);
+
+                //if there are more linked records, free those as well
+                if(linkedRecords!=null){
+                    for(int i=0; i<linkedRecords.length &&linkedRecords[i]!=0;i++){
+                        freePhysPut(linkedRecords[i]);
+                    }
+                }
+
+
+                //first get space in phys
+                physPos = physAllocate(out.pos,false);
+                //now get space in log
+                logPos = logAllocate(physPos);
+
+            }finally{
+                structuralLock.unlock();
+            }
+
+            //write data into log
+            walIndexVal((logPos[0]&MASK_OFFSET) - 1-8-8-1-8, ioRecid, physPos[0]);
+            walPhysArray(out, physPos, logPos);
+
+            modified.put(ioRecid,logPos);
+]]>
+</codefragment>
+</duplication>
 <duplication lines="29" tokens="161">
 <file line="2133" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
 <file line="1178" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/HTreeMap.java"/>
@@ -69,7 +117,7 @@
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="21" tokens="149">
+<duplication lines="21" tokens="155">
 <file line="1012" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
 <file line="1061" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
@@ -83,14 +131,14 @@
             node = engine.get(current, nodeSerializer);
         }
 
-        nodeLocks.lock(current);
+        Utils.lock(nodeLocks, current);
         LeafNode leaf = (LeafNode) engine.get(current, nodeSerializer);
 
         int pos = findChildren(key, node.keys());
         while(pos==leaf.keys.length){
             //follow leaf link until necessary
-            nodeLocks.lock(leaf.next);
-            nodeLocks.unlock(current);
+            Utils.lock(nodeLocks, leaf.next);
+            Utils.unlock(nodeLocks, current);
             current = leaf.next;
             leaf = (LeafNode) engine.get(current, nodeSerializer);
             pos = findChildren(key, node.keys());
@@ -185,44 +233,6 @@
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="30" tokens="121">
-<file line="250" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreDirect.java"/>
-<file line="236" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreWAL.java"/>
-<codefragment>
-<![CDATA[
-            put2(out, ioRecid, indexVals);
-        }finally{
-            lock.unlock();
-        }
-    }
-
-    @Override
-    public <A> boolean compareAndSwap(long recid, A expectedOldValue, A newValue, Serializer<A> serializer) {
-        final long ioRecid = IO_USER_START + recid*8;
-        final Lock lock = locks[Utils.longHash(recid)%CONCURRENCY_FACTOR].writeLock();
-        lock.lock();
-        try{
-            /*
-             * deserialize old value
-             */
-
-            A oldVal = get2(ioRecid,serializer);
-
-            /*
-             * compare oldValue and expected
-             */
-            if((oldVal == null && expectedOldValue!=null) || (oldVal!=null && !oldVal.equals(expectedOldValue)))
-                return false;
-
-            /*
-             * write new value
-             */
-            DataOutput2 out = serialize(newValue, serializer);
-
-            final long[] indexVals;
-]]>
-</codefragment>
-</duplication>
 <duplication lines="5" tokens="118">
 <file line="91" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/EncryptionXTEA.java"/>
 <file line="114" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/EncryptionXTEA.java"/>
@@ -267,8 +277,8 @@
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="107">
-<file line="231" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreAppend.java"/>
-<file line="270" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreAppend.java"/>
+<file line="236" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreAppend.java"/>
+<file line="275" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreAppend.java"/>
 <codefragment>
 <![CDATA[
             long pos;
@@ -292,6 +302,41 @@
             pos+=4;
             vol.putData(pos,out.buf, 0, out.pos);
             recidsInTx.put(recid, filePos);
+]]>
+</codefragment>
+</duplication>
+<duplication lines="27" tokens="104">
+<file line="253" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreDirect.java"/>
+<file line="262" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreWAL.java"/>
+<codefragment>
+<![CDATA[
+            put2(out, ioRecid, indexVals);
+        }finally{
+            Utils.writeUnlock(locks, recid);
+        }
+    }
+
+    @Override
+    public <A> boolean compareAndSwap(long recid, A expectedOldValue, A newValue, Serializer<A> serializer) {
+        final long ioRecid = IO_USER_START + recid*8;
+        Utils.writeLock(locks, recid);
+        try{
+            /*
+             * deserialize old value
+             */
+
+            A oldVal = get2(ioRecid,serializer);
+
+            /*
+             * compare oldValue and expected
+             */
+            if((oldVal == null && expectedOldValue!=null) || (oldVal!=null && !oldVal.equals(expectedOldValue)))
+                return false;
+
+            /*
+             * write new value
+             */
+            DataOutput2 out = serialize(newValue, serializer);
 ]]>
 </codefragment>
 </duplication>
