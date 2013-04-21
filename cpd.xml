@@ -33,8 +33,8 @@
 </codefragment>
 </duplication>
 <duplication lines="40" tokens="172">
-<file line="223" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreWAL.java"/>
-<file line="280" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreWAL.java"/>
+<file line="225" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreWAL.java"/>
+<file line="282" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreWAL.java"/>
 <codefragment>
 <![CDATA[
             final long[] physPos;
@@ -81,7 +81,7 @@
 </codefragment>
 </duplication>
 <duplication lines="29" tokens="161">
-<file line="2133" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="2164" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
 <file line="1178" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/HTreeMap.java"/>
 <codefragment>
 <![CDATA[
@@ -117,35 +117,6 @@
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="21" tokens="155">
-<file line="1012" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1061" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<codefragment>
-<![CDATA[
-        long rootRecid = engine.get(rootRecidRef, Serializer.LONG_SERIALIZER);
-        long current = rootRecid;
-        BNode node = engine.get(current, nodeSerializer);
-        //dive until leaf is found
-        while(!node.isLeaf()){
-            current = nextDir((DirNode) node, key);
-            node = engine.get(current, nodeSerializer);
-        }
-
-        Utils.lock(nodeLocks, current);
-        LeafNode leaf = (LeafNode) engine.get(current, nodeSerializer);
-
-        int pos = findChildren(key, node.keys());
-        while(pos==leaf.keys.length){
-            //follow leaf link until necessary
-            Utils.lock(nodeLocks, leaf.next);
-            Utils.unlock(nodeLocks, current);
-            current = leaf.next;
-            leaf = (LeafNode) engine.get(current, nodeSerializer);
-            pos = findChildren(key, node.keys());
-        }
-]]>
-</codefragment>
-</duplication>
 <duplication lines="16" tokens="130">
 <file line="70" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/Fun.java"/>
 <file line="127" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/Fun.java"/>
@@ -172,8 +143,8 @@
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="127">
-<file line="1486" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1631" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1517" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1662" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
 <![CDATA[
                 return ((BTreeMap.SubMap<E,Object>)m).keyIterator();
@@ -247,8 +218,8 @@
 </codefragment>
 </duplication>
 <duplication lines="22" tokens="113">
-<file line="1125" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1885" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1156" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1916" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
 <![CDATA[
     }
@@ -277,8 +248,8 @@
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="107">
-<file line="236" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreAppend.java"/>
-<file line="275" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreAppend.java"/>
+<file line="238" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreAppend.java"/>
+<file line="277" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreAppend.java"/>
 <codefragment>
 <![CDATA[
             long pos;
@@ -305,9 +276,40 @@
 ]]>
 </codefragment>
 </duplication>
+<duplication lines="23" tokens="104">
+<file line="243" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreDirect.java"/>
+<file line="293" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreDirect.java"/>
+<codefragment>
+<![CDATA[
+            long indexVal = index.getLong(ioRecid);
+            long[] indexVals = spaceReclaimTrack ? getLinkedRecordsIndexVals(indexVal) : null;
+            structuralLock.lock();
+            try{
+
+                if(spaceReclaimTrack){
+                    //free first record pointed from indexVal
+                    freePhysPut(indexVal);
+
+                    //if there are more linked records, free those as well
+                    if(indexVals!=null){
+                        for(int i=0;i<indexVals.length && indexVals[i]!=0;i++){
+                            freePhysPut(indexVals[i]);
+                        }
+                    }
+                }
+
+                indexVals = physAllocate(out.pos,true);
+            }finally {
+                structuralLock.unlock();
+            }
+
+            put2(out, ioRecid, indexVals);
+]]>
+</codefragment>
+</duplication>
 <duplication lines="27" tokens="104">
-<file line="253" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreDirect.java"/>
-<file line="262" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreWAL.java"/>
+<file line="265" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreDirect.java"/>
+<file line="264" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreWAL.java"/>
 <codefragment>
 <![CDATA[
             put2(out, ioRecid, indexVals);
@@ -337,6 +339,21 @@
              * write new value
              */
             DataOutput2 out = serialize(newValue, serializer);
+]]>
+</codefragment>
+</duplication>
+<duplication lines="7" tokens="100">
+<file line="455" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeKeySerializer.java"/>
+<file line="626" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeKeySerializer.java"/>
+<codefragment>
+<![CDATA[
+            Tuple3KeySerializer that = (Tuple3KeySerializer) o;
+
+            if (aComparator != null ? !aComparator.equals(that.aComparator) : that.aComparator != null) return false;
+            if (aSerializer != null ? !aSerializer.equals(that.aSerializer) : that.aSerializer != null) return false;
+            if (bComparator != null ? !bComparator.equals(that.bComparator) : that.bComparator != null) return false;
+            if (bSerializer != null ? !bSerializer.equals(that.bSerializer) : that.bSerializer != null) return false;
+            if (cSerializer != null ? !cSerializer.equals(that.cSerializer) : that.cSerializer != null) return false;
 ]]>
 </codefragment>
 </duplication>
