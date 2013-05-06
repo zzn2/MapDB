@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pmd-cpd>
 <duplication lines="24" tokens="194">
-<file line="127" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/Fun.java"/>
-<file line="200" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/Fun.java"/>
+<file line="127" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/Fun.java"/>
+<file line="200" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/Fun.java"/>
 <codefragment>
 <![CDATA[
             final Tuple3 oo = (Tuple3) o;
@@ -33,8 +33,8 @@
 </codefragment>
 </duplication>
 <duplication lines="40" tokens="172">
-<file line="225" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreWAL.java"/>
-<file line="282" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreWAL.java"/>
+<file line="225" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreWAL.java"/>
+<file line="282" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreWAL.java"/>
 <codefragment>
 <![CDATA[
             final long[] physPos;
@@ -81,8 +81,8 @@
 </codefragment>
 </duplication>
 <duplication lines="29" tokens="161">
-<file line="2164" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1178" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/HTreeMap.java"/>
+<file line="2164" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1178" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/HTreeMap.java"/>
 <codefragment>
 <![CDATA[
         return new BTreeMap<K, V>(snapshot,treeRecid, defaultSerializer);
@@ -118,9 +118,9 @@
 </codefragment>
 </duplication>
 <duplication lines="16" tokens="130">
-<file line="70" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/Fun.java"/>
-<file line="127" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/Fun.java"/>
-<file line="200" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/Fun.java"/>
+<file line="70" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/Fun.java"/>
+<file line="127" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/Fun.java"/>
+<file line="200" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/Fun.java"/>
 <codefragment>
 <![CDATA[
             final Tuple2 oo = (Tuple2) o;
@@ -143,8 +143,8 @@
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="127">
-<file line="1517" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1662" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1517" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1662" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
 <![CDATA[
                 return ((BTreeMap.SubMap<E,Object>)m).keyIterator();
@@ -172,8 +172,8 @@
 </codefragment>
 </duplication>
 <duplication lines="14" tokens="122">
-<file line="653" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/LongConcurrentLRUMap.java"/>
-<file line="681" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/LongConcurrentLRUMap.java"/>
+<file line="653" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/LongConcurrentLRUMap.java"/>
+<file line="681" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/LongConcurrentLRUMap.java"/>
 <codefragment>
 <![CDATA[
   public Map<Long,V> getOldestAccessedItems(int n) {
@@ -194,8 +194,8 @@
 </codefragment>
 </duplication>
 <duplication lines="3" tokens="121">
-<file line="72" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/EncryptionXTEA.java"/>
-<file line="95" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/EncryptionXTEA.java"/>
+<file line="72" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/EncryptionXTEA.java"/>
+<file line="95" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/EncryptionXTEA.java"/>
 <codefragment>
 <![CDATA[
     private void encryptBlock(byte[] in, byte[] out, int off) {
@@ -205,8 +205,8 @@
 </codefragment>
 </duplication>
 <duplication lines="5" tokens="118">
-<file line="91" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/EncryptionXTEA.java"/>
-<file line="114" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/EncryptionXTEA.java"/>
+<file line="91" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/EncryptionXTEA.java"/>
+<file line="114" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/EncryptionXTEA.java"/>
 <codefragment>
 <![CDATA[
         out[off] = (byte) (y >> 24); out[off+1] = (byte) (y >> 16); out[off+2] = (byte) (y >> 8); out[off+3] = (byte) y;
@@ -218,8 +218,8 @@
 </codefragment>
 </duplication>
 <duplication lines="22" tokens="113">
-<file line="1156" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1916" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1156" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1916" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
 <![CDATA[
     }
@@ -248,8 +248,8 @@
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="107">
-<file line="238" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreAppend.java"/>
-<file line="277" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreAppend.java"/>
+<file line="238" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreAppend.java"/>
+<file line="277" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreAppend.java"/>
 <codefragment>
 <![CDATA[
             long pos;
@@ -277,8 +277,8 @@
 </codefragment>
 </duplication>
 <duplication lines="23" tokens="104">
-<file line="243" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreDirect.java"/>
-<file line="293" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreDirect.java"/>
+<file line="243" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreDirect.java"/>
+<file line="293" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreDirect.java"/>
 <codefragment>
 <![CDATA[
             long indexVal = index.getLong(ioRecid);
@@ -308,8 +308,8 @@
 </codefragment>
 </duplication>
 <duplication lines="27" tokens="104">
-<file line="265" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreDirect.java"/>
-<file line="264" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/StoreWAL.java"/>
+<file line="265" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreDirect.java"/>
+<file line="264" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreWAL.java"/>
 <codefragment>
 <![CDATA[
             put2(out, ioRecid, indexVals);
@@ -343,8 +343,8 @@
 </codefragment>
 </duplication>
 <duplication lines="7" tokens="100">
-<file line="455" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeKeySerializer.java"/>
-<file line="626" path="/home/jan/DB/MapDB/src/main/java/org/mapdb/BTreeKeySerializer.java"/>
+<file line="455" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeKeySerializer.java"/>
+<file line="626" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeKeySerializer.java"/>
 <codefragment>
 <![CDATA[
             Tuple3KeySerializer that = (Tuple3KeySerializer) o;
