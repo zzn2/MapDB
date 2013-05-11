@@ -32,9 +32,9 @@
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="40" tokens="172">
-<file line="225" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreWAL.java"/>
-<file line="282" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreWAL.java"/>
+<duplication lines="41" tokens="173">
+<file line="226" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreWAL.java"/>
+<file line="285" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreWAL.java"/>
 <codefragment>
 <![CDATA[
             final long[] physPos;
@@ -77,12 +77,13 @@
             walPhysArray(out, physPos, logPos);
 
             modified.put(ioRecid,logPos);
+        }finally{
 ]]>
 </codefragment>
 </duplication>
 <duplication lines="29" tokens="161">
 <file line="2164" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1178" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/HTreeMap.java"/>
+<file line="1193" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/HTreeMap.java"/>
 <codefragment>
 <![CDATA[
         return new BTreeMap<K, V>(snapshot,treeRecid, defaultSerializer);
@@ -247,6 +248,43 @@
 ]]>
 </codefragment>
 </duplication>
+<duplication lines="29" tokens="111">
+<file line="269" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreDirect.java"/>
+<file line="265" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreWAL.java"/>
+<codefragment>
+<![CDATA[
+            put2(out, ioRecid, indexVals);
+        }finally{
+            Utils.writeUnlock(locks, recid);
+        }
+        recycledDataOuts.offer(out);
+    }
+
+    @Override
+    public <A> boolean compareAndSwap(long recid, A expectedOldValue, A newValue, Serializer<A> serializer) {
+        final long ioRecid = IO_USER_START + recid*8;
+        Utils.writeLock(locks, recid);
+        DataOutput2 out;
+        try{
+            /*
+             * deserialize old value
+             */
+
+            A oldVal = get2(ioRecid,serializer);
+
+            /*
+             * compare oldValue and expected
+             */
+            if((oldVal == null && expectedOldValue!=null) || (oldVal!=null && !oldVal.equals(expectedOldValue)))
+                return false;
+
+            /*
+             * write new value
+             */
+             out = serialize(newValue, serializer);
+]]>
+</codefragment>
+</duplication>
 <duplication lines="21" tokens="107">
 <file line="238" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreAppend.java"/>
 <file line="277" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreAppend.java"/>
@@ -276,9 +314,9 @@
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="23" tokens="104">
-<file line="243" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreDirect.java"/>
-<file line="293" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreDirect.java"/>
+<duplication lines="24" tokens="105">
+<file line="247" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreDirect.java"/>
+<file line="299" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreDirect.java"/>
 <codefragment>
 <![CDATA[
             long indexVal = index.getLong(ioRecid);
@@ -304,41 +342,7 @@
             }
 
             put2(out, ioRecid, indexVals);
-]]>
-</codefragment>
-</duplication>
-<duplication lines="27" tokens="104">
-<file line="265" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreDirect.java"/>
-<file line="264" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreWAL.java"/>
-<codefragment>
-<![CDATA[
-            put2(out, ioRecid, indexVals);
         }finally{
-            Utils.writeUnlock(locks, recid);
-        }
-    }
-
-    @Override
-    public <A> boolean compareAndSwap(long recid, A expectedOldValue, A newValue, Serializer<A> serializer) {
-        final long ioRecid = IO_USER_START + recid*8;
-        Utils.writeLock(locks, recid);
-        try{
-            /*
-             * deserialize old value
-             */
-
-            A oldVal = get2(ioRecid,serializer);
-
-            /*
-             * compare oldValue and expected
-             */
-            if((oldVal == null && expectedOldValue!=null) || (oldVal!=null && !oldVal.equals(expectedOldValue)))
-                return false;
-
-            /*
-             * write new value
-             */
-            DataOutput2 out = serialize(newValue, serializer);
 ]]>
 </codefragment>
 </duplication>
