@@ -33,8 +33,8 @@
 </codefragment>
 </duplication>
 <duplication lines="41" tokens="173">
-<file line="230" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreWAL.java"/>
-<file line="290" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreWAL.java"/>
+<file line="232" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreWAL.java"/>
+<file line="292" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreWAL.java"/>
 <codefragment>
 <![CDATA[
             final long[] physPos;
@@ -82,7 +82,7 @@
 </codefragment>
 </duplication>
 <duplication lines="29" tokens="161">
-<file line="2172" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="2231" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeMap.java"/>
 <file line="1193" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/HTreeMap.java"/>
 <codefragment>
 <![CDATA[
@@ -118,6 +118,37 @@
 ]]>
 </codefragment>
 </duplication>
+<duplication lines="23" tokens="156">
+<file line="1366" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1399" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeMap.java"/>
+<codefragment>
+<![CDATA[
+    protected Entry<K, V> findLarger(K key, boolean inclusive) {
+        if(key==null) return null;
+        K v = (K) key;
+        final long rootRecid = engine.get(rootRecidRef, Serializer.LONG_SERIALIZER);
+        long current = rootRecid;
+        BNode A = engine.get(current, nodeSerializer);
+
+        //dive until  leaf
+        while(!A.isLeaf()){
+            current = nextDir((DirNode) A, v);
+            A = engine.get(current, nodeSerializer);
+        }
+
+        //now at leaf level
+        LeafNode leaf = (LeafNode) A;
+        //follow link until first matching node is found
+        final int comp = inclusive?1:0;
+        while(true){
+            for(int i=1;i<leaf.keys.length-1;i++){
+                if(leaf.keys[i]==null) continue;
+
+                if(comparator.compare(key, leaf.keys[i])<comp){
+                    return makeEntry(leaf.keys[i], hasValues?valExpand(leaf.vals[i]):Utils.EMPTY_STRING);
+]]>
+</codefragment>
+</duplication>
 <duplication lines="16" tokens="130">
 <file line="70" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/Fun.java"/>
 <file line="127" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/Fun.java"/>
@@ -144,8 +175,8 @@
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="127">
-<file line="1525" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1670" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1631" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1776" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
 <![CDATA[
                 return ((BTreeMap.SubMap<E,Object>)m).keyIterator();
@@ -173,8 +204,8 @@
 </codefragment>
 </duplication>
 <duplication lines="31" tokens="126">
-<file line="271" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreDirect.java"/>
-<file line="269" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreWAL.java"/>
+<file line="275" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreDirect.java"/>
+<file line="271" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreWAL.java"/>
 <codefragment>
 <![CDATA[
             put2(out, ioRecid, indexVals);
@@ -258,8 +289,8 @@
 </codefragment>
 </duplication>
 <duplication lines="22" tokens="113">
-<file line="1164" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeMap.java"/>
-<file line="1924" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="1238" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeMap.java"/>
+<file line="2030" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/BTreeMap.java"/>
 <codefragment>
 <![CDATA[
     }
@@ -287,38 +318,9 @@
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="21" tokens="107">
-<file line="238" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreAppend.java"/>
-<file line="277" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreAppend.java"/>
-<codefragment>
-<![CDATA[
-            long pos;
-            long volNum;
-            Volume vol;
-            structuralLock.lock();
-            try{
-                pos = currentFileOffset;
-                currentFileOffset += 8 + 4 + out.pos;
-                currentVolume.ensureAvailable(currentFileOffset);
-                volNum = currentVolumeNum;
-                vol = currentVolume;
-                rollOverFile();
-            }finally {
-                structuralLock.unlock();
-            }
-            vol.putLong(pos, recid);
-            pos+=8;
-            long filePos = (volNum<<FILE_NUMBER_SHIFT) | pos;
-            vol.putInt(pos,out.pos);
-            pos+=4;
-            vol.putData(pos,out.buf, 0, out.pos);
-            recidsInTx.put(recid, filePos);
-]]>
-</codefragment>
-</duplication>
 <duplication lines="24" tokens="105">
-<file line="249" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreDirect.java"/>
-<file line="303" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreDirect.java"/>
+<file line="253" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreDirect.java"/>
+<file line="307" path="/home/jan/DB/mapdb/src/main/java/org/mapdb/StoreDirect.java"/>
 <codefragment>
 <![CDATA[
             long indexVal = index.getLong(ioRecid);
