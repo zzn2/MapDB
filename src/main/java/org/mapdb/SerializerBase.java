@@ -71,7 +71,7 @@ public class SerializerBase implements Serializer{
         public void add(K o) {
             if (data.length == size) {
                 //grow array if necessary
-                data = Arrays.copyOf(data, data.length * 2);
+                data = ArraysCompat.copyOf(data, data.length * 2);
             }
 
             data[size] = o;

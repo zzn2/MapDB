@@ -175,7 +175,7 @@ final public class Utils {
 
     /** expand array size by 1, and put value at given position. No items from original array are lost*/
     public static Object[] arrayPut(final Object[] array, final int pos, final Object value){
-        final Object[] ret = Arrays.copyOf(array, array.length+1);
+        final Object[] ret = ArraysCompat.copyOf(array, array.length+1);
         if(pos<array.length){
             System.arraycopy(array, pos, ret, pos+1, array.length-pos);
         }
@@ -184,7 +184,7 @@ final public class Utils {
     }
 
     public static long[] arrayLongPut(final long[] array, final int pos, final long value) {
-        final long[] ret = Arrays.copyOf(array,array.length+1);
+        final long[] ret = ArraysCompat.copyOf(array,array.length+1);
         if(pos<array.length){
             System.arraycopy(array,pos,ret,pos+1,array.length-pos);
         }

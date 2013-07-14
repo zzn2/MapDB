@@ -201,7 +201,7 @@ public class HTreeMap<K,V>   extends AbstractMap<K,V> implements ConcurrentMap<K
 
         this.engine = engine;
         this.hashSalt = hashSalt;
-        this.segmentRecids = Arrays.copyOf(segmentRecids,16);
+        this.segmentRecids = ArraysCompat.copyOf(segmentRecids,16);
         this.keySerializer = keySerializer;
         this.valueSerializer = valueSerializer;
         if(expire==0 && expireAccess!=0){
@@ -217,8 +217,8 @@ public class HTreeMap<K,V>   extends AbstractMap<K,V> implements ConcurrentMap<K
         this.expireTimeStart = expireTimeStart;
         this.expireAccessFlag = expireAccess !=0L || expireMaxSize!=0;
         this.expireAccess = expireAccess;
-        this.expireHeads = expireHeads==null? null : Arrays.copyOf(expireHeads,16);
-        this.expireTails = expireTails==null? null : Arrays.copyOf(expireTails,16);
+        this.expireHeads = expireHeads==null? null : ArraysCompat.copyOf(expireHeads,16);
+        this.expireTails = expireTails==null? null : ArraysCompat.copyOf(expireTails,16);
         this.expireMaxSizeFlag = expireMaxSize!=0;
         this.expireMaxSize = expireMaxSize;
 
@@ -406,7 +406,7 @@ public class HTreeMap<K,V>   extends AbstractMap<K,V> implements ConcurrentMap<K
                 }
 
                 if(dir[slot/8] == null){
-                    dir = Arrays.copyOf(dir,16);
+                    dir = ArraysCompat.copyOf(dir,16);
                     dir[slot/8] = new long[8];
                 }
 
@@ -474,8 +474,8 @@ public class HTreeMap<K,V>   extends AbstractMap<K,V> implements ConcurrentMap<K
                     //insert nextDir and update parent dir
                     long nextDirRecid = engine.put(nextDir, DIR_SERIALIZER);
                     int parentPos = (h>>>(7*level )) & 0x7F;
-                    dir = Arrays.copyOf(dir,16);
-                    dir[parentPos/8] = Arrays.copyOf(dir[parentPos/8],8);
+                    dir = ArraysCompat.copyOf(dir,16);
+                    dir[parentPos/8] = ArraysCompat.copyOf(dir[parentPos/8],8);
                     dir[parentPos/8][parentPos%8] = (nextDirRecid<<1) | 0;
                     engine.update(dirRecid, dir, DIR_SERIALIZER);
                     notify(key, null, value);
@@ -486,8 +486,8 @@ public class HTreeMap<K,V>   extends AbstractMap<K,V> implements ConcurrentMap<K
                     final long expireNodeRecid = expireFlag? engine.put(null, ExpireLinkNode.SERIALIZER):0L;
 
                     final long newRecid = engine.put(new LinkedNode<K, V>(recid, expireNodeRecid, key, value), LN_SERIALIZER);
-                    dir = Arrays.copyOf(dir,16);
-                    dir[slot/8] = Arrays.copyOf(dir[slot/8],8);
+                    dir = ArraysCompat.copyOf(dir,16);
+                    dir[slot/8] = ArraysCompat.copyOf(dir[slot/8],8);
                     dir[slot/8][slot%8] = (newRecid<<1) | 1;
                     engine.update(dirRecid, dir, DIR_SERIALIZER);
                     if(expireFlag) expireLinkAdd(segment,expireNodeRecid, newRecid,h);
@@ -532,7 +532,7 @@ public class HTreeMap<K,V>   extends AbstractMap<K,V> implements ConcurrentMap<K
                 }
 
                 if(dir[slot/8] == null){
-                    dir = Arrays.copyOf(dir,16);
+                    dir = ArraysCompat.copyOf(dir,16);
                     dir[slot/8] = new long[8];
                 }
 
@@ -561,8 +561,8 @@ public class HTreeMap<K,V>   extends AbstractMap<K,V> implements ConcurrentMap<K
 
 
                                 }else{
-                                    dir=Arrays.copyOf(dir,16);
-                                    dir[slot/8] = Arrays.copyOf(dir[slot/8],8);
+                                    dir=ArraysCompat.copyOf(dir,16);
+                                    dir[slot/8] = ArraysCompat.copyOf(dir[slot/8],8);
                                     dir[slot/8][slot%8] = (ln.next<<1)|1;
                                     engine.update(dirRecids[level], dir, DIR_SERIALIZER);
                                 }
@@ -597,8 +597,8 @@ public class HTreeMap<K,V>   extends AbstractMap<K,V> implements ConcurrentMap<K
     private void recursiveDirDelete(int h, int level, long[] dirRecids, long[][] dir, int slot) {
         //TODO keep dir immutable while recursive delete
         //was only item in linked list, so try to collapse the dir
-        dir=Arrays.copyOf(dir,16);
-        dir[slot/8] = Arrays.copyOf(dir[slot/8],8);
+        dir=ArraysCompat.copyOf(dir,16);
+        dir[slot/8] = ArraysCompat.copyOf(dir[slot/8],8);
         dir[slot/8][slot%8] = 0;
         //one record was zeroed out, check if subarray can be collapsed to null
         boolean allZero = true;
@@ -957,7 +957,7 @@ public class HTreeMap<K,V>   extends AbstractMap<K,V> implements ConcurrentMap<K
                 if(ret!=null) for(LinkedNode ln:ret){
                     assert hash(ln.key)>>>28==segment;
                 }
-                //System.out.println(Arrays.asList(ret));
+                //System.out.println(ArraysCompat.asList(ret));
                 if(ret !=null) return ret;
                 hash = 0;
             }finally {
@@ -989,7 +989,7 @@ public class HTreeMap<K,V>   extends AbstractMap<K,V> implements ConcurrentMap<K
                                 }
                                 //increase array size if needed
                                 if(arrayPos == array.length)
-                                    array = Arrays.copyOf(array, array.length+1);
+                                    array = ArraysCompat.copyOf(array, array.length+1);
                                 array[arrayPos++] = ln;
                                 recid = ln.next;
                             }
@@ -1443,7 +1443,7 @@ public class HTreeMap<K,V>   extends AbstractMap<K,V> implements ConcurrentMap<K
     public void addModificationListener(Bind.MapListener<K,V> listener) {
         synchronized (modListenersLock){
             Bind.MapListener<K,V>[] modListeners2 =
-                    Arrays.copyOf(modListeners,modListeners.length+1);
+                    ArraysCompat.copyOf(modListeners,modListeners.length+1);
             modListeners2[modListeners2.length-1] = listener;
             modListeners = modListeners2;
         }

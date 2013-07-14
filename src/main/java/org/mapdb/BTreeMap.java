@@ -30,8 +30,6 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 import java.util.*;
-import java.util.concurrent.ConcurrentNavigableMap;
-import java.util.concurrent.ConcurrentSkipListMap;
 
 import static org.mapdb.SerializationHeader.*;
 
@@ -589,7 +587,7 @@ public class BTreeMap<K,V> extends AbstractMap<K,V>
                 //stack push t
                 stackPos++;
                 if(stackVals.length == stackPos) //grow if needed
-                    stackVals = Arrays.copyOf(stackVals, stackVals.length*2);
+                    stackVals = ArraysCompat.copyOf(stackVals, stackVals.length*2);
                 stackVals[stackPos] = t;
             }
             A = engine.get(current, nodeSerializer);
@@ -620,11 +618,11 @@ public class BTreeMap<K,V> extends AbstractMap<K,V>
                     //insert new
                     Object[] vals = null;
                     if(hasValues){
-                        vals = Arrays.copyOf(A.vals(), A.vals().length);
+                        vals = ArraysCompat.copyOf(A.vals(), A.vals().length);
                         vals[pos] = value;
                     }
 
-                    A = new LeafNode(Arrays.copyOf(A.keys(), A.keys().length), vals, ((LeafNode)A).next);
+                    A = new LeafNode(ArraysCompat.copyOf(A.keys(), A.keys().length), vals, ((LeafNode)A).next);
                     engine.update(current, A, nodeSerializer);
                     //already in here
                     Utils.unlock(nodeLocks, current);
@@ -688,33 +686,33 @@ public class BTreeMap<K,V> extends AbstractMap<K,V>
                 if(A.isLeaf()){
                     Object[] vals2 = null;
                     if(hasValues){
-                        vals2 = Arrays.copyOfRange(vals, splitPos, vals.length);
+                        vals2 = ArraysCompat.copyOfRange(vals, splitPos, vals.length);
                         vals2[0] = null;
                     }
 
                     B = new LeafNode(
-                                Arrays.copyOfRange(keys, splitPos, keys.length),
+                                ArraysCompat.copyOfRange(keys, splitPos, keys.length),
                                 vals2,
                                 ((LeafNode)A).next);
                 }else{
-                    B = new DirNode(Arrays.copyOfRange(keys, splitPos, keys.length),
-                                Arrays.copyOfRange(child, splitPos, keys.length));
+                    B = new DirNode(ArraysCompat.copyOfRange(keys, splitPos, keys.length),
+                                ArraysCompat.copyOfRange(child, splitPos, keys.length));
                 }
                 long q = engine.put(B, nodeSerializer);
                 if(A.isLeaf()){  //  splitPos+1 is there so A gets new high  value (key)
-                    Object[] keys2 = Arrays.copyOf(keys, splitPos+2);
+                    Object[] keys2 = ArraysCompat.copyOf(keys, splitPos+2);
                     keys2[keys2.length-1] = keys2[keys2.length-2];
                     Object[] vals2 = null;
                     if(hasValues){
-                        vals2 = Arrays.copyOf(vals, splitPos+2);
+                        vals2 = ArraysCompat.copyOf(vals, splitPos+2);
                         vals2[vals2.length-1] = null;
                     }
                     //TODO check high/low keys overlap
                     A = new LeafNode(keys2, vals2, q);
                 }else{
-                    long[] child2 = Arrays.copyOf(child, splitPos+1);
+                    long[] child2 = ArraysCompat.copyOf(child, splitPos+1);
                     child2[splitPos] = q;
-                    A = new DirNode(Arrays.copyOf(keys, splitPos+1), child2);
+                    A = new DirNode(ArraysCompat.copyOf(keys, splitPos+1), child2);
                 }
                 engine.update(current, A, nodeSerializer);
 
@@ -1090,14 +1088,14 @@ public class BTreeMap<K,V> extends AbstractMap<K,V>
             Object val  = leaf.vals[pos];
             val = valExpand(val);
             if(oldValue.equals(val)){ //TODO use comparator here?
-                Object[] vals = Arrays.copyOf(leaf.vals, leaf.vals.length);
+                Object[] vals = ArraysCompat.copyOf(leaf.vals, leaf.vals.length);
                 notify(key, oldValue, newValue);
                 if(valsOutsideNodes){
                     long recid = engine.put(newValue, valueSerializer);
                     newValue = (V) new ValRef(recid);
                 }
                 vals[pos] = newValue;
-                leaf = new LeafNode(Arrays.copyOf(leaf.keys, leaf.keys.length), vals, leaf.next);
+                leaf = new LeafNode(ArraysCompat.copyOf(leaf.keys, leaf.keys.length), vals, leaf.next);
 
                 engine.update(current, leaf, nodeSerializer);
 
@@ -1144,7 +1142,7 @@ public class BTreeMap<K,V> extends AbstractMap<K,V>
         Object ret = null;
         if( key!=null && leaf.keys()[pos]!=null &&
                 0==comparator.compare(key,leaf.keys[pos])){
-            Object[] vals = Arrays.copyOf(leaf.vals, leaf.vals.length);
+            Object[] vals = ArraysCompat.copyOf(leaf.vals, leaf.vals.length);
             Object oldVal = vals[pos];
             ret =  valExpand(oldVal);
             notify(key, (V)ret, value);
@@ -1153,7 +1151,7 @@ public class BTreeMap<K,V> extends AbstractMap<K,V>
                 value = (V) new ValRef(recid);
             }
             vals[pos] = value;
-            leaf = new LeafNode(Arrays.copyOf(leaf.keys, leaf.keys.length), vals, leaf.next);
+            leaf = new LeafNode(ArraysCompat.copyOf(leaf.keys, leaf.keys.length), vals, leaf.next);
             engine.update(current, leaf, nodeSerializer);
 
 
@@ -2198,7 +2196,7 @@ public class BTreeMap<K,V> extends AbstractMap<K,V>
     public void addModificationListener(Bind.MapListener<K,V> listener) {
         synchronized (modListenersLock){
             Bind.MapListener<K,V>[] modListeners2 =
-                    Arrays.copyOf(modListeners,modListeners.length+1);
+                    ArraysCompat.copyOf(modListeners,modListeners.length+1);
             modListeners2[modListeners2.length-1] = listener;
             modListeners = modListeners2;
         }

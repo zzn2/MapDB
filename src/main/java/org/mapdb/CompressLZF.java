@@ -52,7 +52,6 @@ package org.mapdb;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.util.Arrays;
 
 /**
  * <p>
@@ -338,7 +337,7 @@ public final class CompressLZF{
 
             CompressLZF lzf = LZF.get();
             lzf.expand(inbuf, 0, inbuf.length, outbuf, 0, expendedLen);
-            outbuf = Arrays.copyOf(outbuf, expendedLen);
+            outbuf = ArraysCompat.copyOf(outbuf, expendedLen);
 
             return outbuf;
         }

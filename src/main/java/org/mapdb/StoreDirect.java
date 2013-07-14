@@ -19,7 +19,6 @@ import java.io.File;
 import java.io.IOError;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -311,7 +310,7 @@ public class StoreDirect extends Store{
                 DataInput2 in = phys.getDataInput(offset + c, size-c);
 
                 if(buf.length<pos+size-c)
-                    buf = Arrays.copyOf(buf,Math.max(pos+size-c,buf.length*2)); //buf to small, grow
+                    buf = ArraysCompat.copyOf(buf,Math.max(pos+size-c,buf.length*2)); //buf to small, grow
                 in.readFully(buf,pos,size-c);
                 pos+=size-c;
                 if(c==0) break;
@@ -479,7 +478,7 @@ public class StoreDirect extends Store{
             long linkedVal = phys.getLong(indexVal&MASK_OFFSET);
             for(;;){
                 if(linkedPos==linkedRecords.length) //grow if necessary
-                    linkedRecords = Arrays.copyOf(linkedRecords, linkedRecords.length * 2);
+                    linkedRecords = ArraysCompat.copyOf(linkedRecords, linkedRecords.length * 2);
                 //store last linkedVal
                 linkedRecords[linkedPos] = linkedVal;
 
@@ -507,7 +506,7 @@ public class StoreDirect extends Store{
             int c = 8;
 
             while(size>0){
-                if(retPos == ret.length) ret = Arrays.copyOf(ret, ret.length*2);
+                if(retPos == ret.length) ret = ArraysCompat.copyOf(ret, ret.length*2);
                 int allocSize = Math.min(size, MAX_REC_SIZE);
                 size -= allocSize - c;
 
@@ -521,7 +520,7 @@ public class StoreDirect extends Store{
             }
             if(size!=0) throw new InternalError();
 
-            return Arrays.copyOf(ret, retPos);
+            return ArraysCompat.copyOf(ret, retPos);
         }
     }
 

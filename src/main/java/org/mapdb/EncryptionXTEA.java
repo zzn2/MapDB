@@ -235,7 +235,7 @@ public final class EncryptionXTEA implements Serializer<byte[]>{
         //write length difference
         out.writeByte(len-value.length);
         //write actual data
-        byte[] encrypted = Arrays.copyOf(value,len);
+        byte[] encrypted = ArraysCompat.copyOf(value,len);
         encrypt(encrypted,0, encrypted.length);
         out.write(encrypted);
     }
@@ -248,7 +248,7 @@ public final class EncryptionXTEA implements Serializer<byte[]>{
         in.readFully(b);
         decrypt(b, 0, b.length);
         if(cut!=0)
-            b = Arrays.copyOf(b, b.length-cut);
+            b = ArraysCompat.copyOf(b, b.length-cut);
         return b;
     }
 }

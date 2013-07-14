@@ -6,8 +6,6 @@ import java.util.Iterator;
 import java.util.Queue;
 import java.io.Serializable;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.ConcurrentNavigableMap;
-import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**

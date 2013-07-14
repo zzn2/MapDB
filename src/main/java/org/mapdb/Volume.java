@@ -21,7 +21,6 @@ import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.WeakHashMap;
 import java.util.concurrent.locks.ReentrantLock;
@@ -279,7 +278,7 @@ public abstract class Volume {
 
                 //grow array if necessary
                 if(buffersPos>=buffers2.length){
-                    buffers2 = Arrays.copyOf(buffers2, Math.max(buffersPos+1, buffers2.length * 2));
+                    buffers2 = ArraysCompat.copyOf(buffers2, Math.max(buffersPos+1, buffers2.length * 2));
                 }
 
 

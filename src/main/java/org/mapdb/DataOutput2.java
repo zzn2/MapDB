@@ -19,7 +19,6 @@ package org.mapdb;
 import java.io.DataOutput;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Arrays;
 
 /**
   * Provides {@link DataOutput} implementation on top of growable {@code byte[]}
@@ -44,7 +43,7 @@ public final class DataOutput2 extends OutputStream implements DataOutput {
     }
 
     public byte[] copyBytes(){
-        return Arrays.copyOf(buf, pos);
+        return ArraysCompat.copyOf(buf, pos);
     }
 
     /**
@@ -53,7 +52,7 @@ public final class DataOutput2 extends OutputStream implements DataOutput {
     public void ensureAvail(final int n) {
         if (pos + n >= buf.length) {
             int newSize = Math.max(pos + n, buf.length * 2);
-            buf = Arrays.copyOf(buf, newSize);
+            buf = ArraysCompat.copyOf(buf, newSize);
         }
     }
 

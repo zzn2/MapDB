@@ -20,10 +20,8 @@ import org.mapdb.EngineWrapper.ByteTransformEngine;
 import org.mapdb.EngineWrapper.ReadOnlyEngine;
 
 import java.io.File;
-import java.io.IOError;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.NavigableSet;
 import java.util.Set;
 
 /**
@@ -155,6 +153,7 @@ public class DBMaker {
      *
      * <p>Storage is created in temp folder and deleted on JVM shutdown
      */
+    /*
     public static <K> NavigableSet<K> newTempTreeSet(){
         return newTempFileDB()
                 .deleteFilesAfterClose()
@@ -163,6 +162,7 @@ public class DBMaker {
                 .make()
                 .getTreeSet("temp");
     }
+    */
 
     /**
      * Create new HashSet backed by temporary file storage.

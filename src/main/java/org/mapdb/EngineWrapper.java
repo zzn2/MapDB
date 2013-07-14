@@ -17,7 +17,6 @@
 package org.mapdb;
 
 
-import java.io.IOError;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
